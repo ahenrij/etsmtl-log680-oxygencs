@@ -11,11 +11,11 @@ class App:
         self.TICKS = 10
 
         # To be configured by your team
-        self.HOST = "https://159.203.50.162/"  #  host
+        self.HOST = "http://159.203.50.162"  #  host
         self.TOKEN = "e7026c64578833bfc1ba"  #  token
         self.T_MAX = 20  # max temperature
         self.T_MIN = 10  # min temperature
-        self.DATABASE_URL = "157.230.69.113"  # database
+        self.DATABASE_URL = "http://157.230.69.113"  # database
 
     def __del__(self):
         if self._hub_connection != None:
