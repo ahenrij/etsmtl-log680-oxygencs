@@ -28,7 +28,7 @@ pipenv install
 
 ## Setup
 
-You need to setup the following variables inside the App class:
+To run the app on your machine, you need to setup the following variables in your environment:
 
 - HOST: The host of the sensor hub and HVAC system.
 - TOKEN: The token for authenticating requests.
