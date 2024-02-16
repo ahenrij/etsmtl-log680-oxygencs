@@ -3,11 +3,13 @@ import logging
 import requests
 import json
 import time
+import psycopg2
 
 
 class App:
     def __init__(self):
         self._hub_connection = None
+        self._db_connection = None
         self.TICKS = 10
 
         # To be configured by your team
@@ -15,13 +17,20 @@ class App:
         self.TOKEN = "e7026c64578833bfc1ba"  #  token
         self.T_MAX = 20  # max temperature
         self.T_MIN = 10  # min temperature
-        self.DATABASE_URL = "http://157.230.69.113"  # database
+        self.DATABASE_URL = "157.230.69.113"  # database
+        self.DATABASE_USER = "user02eq2"  # database user
+        self.DATABASE_PASSWORD = "Dw2OtjzSOKoZvrGN"  # database password
+        self.DATABASE_NAME = "db02eq2" # database name
 
     def __del__(self):
         if self._hub_connection != None:
             self._hub_connection.stop()
+        if self._db_connection != None:
+            self._db_connection.close()
 
     def start(self):
+        """Start DB."""
+        self._db_connection = self.connect_to_database()
         """Start Oxygen CS."""
         self.setup_sensor_hub()
         self._hub_connection.start()
@@ -84,6 +93,25 @@ class App:
         except requests.exceptions.RequestException as e:
             # To implement
             pass
+    
+    def connect_to_database(self):
+        """Connect to the database."""
+        try:
+            conn = psycopg2.connect(
+                host=self.DATABASE_URL,
+                database=self.DATABASE_NAME,
+                user=self.DATABASE_USER,
+                password=self.DATABASE_PASSWORD,
+            )
+            # Create a cursor object
+            cur = conn.cursor()
+
+            print("You are connected to the database")
+            cur.close()
+            return conn
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(error)
+            return None
 
 
 if __name__ == "__main__":
