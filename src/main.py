@@ -1,3 +1,4 @@
+import os
 from signalrcore.hub_connection_builder import HubConnectionBuilder
 import logging
 import requests
@@ -13,14 +14,14 @@ class App:
         self.TICKS = 10
 
         # To be configured by your team
-        self.HOST = "http://159.203.50.162"  #  host
-        self.TOKEN = "e7026c64578833bfc1ba"  #  token
-        self.T_MAX = 20  # max temperature
-        self.T_MIN = 10  # min temperature
-        self.DATABASE_URL = "157.230.69.113"  # database
-        self.DATABASE_USER = "user02eq2"  # database user
-        self.DATABASE_PASSWORD = "Dw2OtjzSOKoZvrGN"  # database password
-        self.DATABASE_NAME = "db02eq2" # database name
+        self.HOST = os.environ.get('HOST')  #  host
+        self.TOKEN = os.environ.get('TOKEN')  #  token
+        self.T_MAX = os.environ.get('T_MAX')  # max temperature
+        self.T_MIN = os.environ.get('T_MIN')  # min temperature
+        self.DATABASE_URL = os.environ.get('DATABASE_URL')  # database
+        self.DATABASE_USER = os.environ.get('DATABASE_USER')  # database user
+        self.DATABASE_PASSWORD = os.environ.get('DATABASE_PASSWORD')  # database password
+        self.DATABASE_NAME = os.environ.get('DATABASE_NAME') # database name
 
     def __del__(self):
         if self._hub_connection != None:
