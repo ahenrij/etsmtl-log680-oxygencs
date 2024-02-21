@@ -1,1 +1,33 @@
-## To implement
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: debug-statements
+
+  # Add other hooks you want to run with pipenv here
+  - repo: local
+    hooks:
+      - id: pipenv-run-format
+        name: "Pipenv run format"
+        language: system
+        entry: pipenv run format
+        pass_filenames: false
+        types: [python]
+
+      - id: pipenv-run-lint
+        name: "Pipenv run lint"
+        language: system
+        entry: pipenv run lint
+        pass_filenames: false
+        types: [python]
+
+      - id: pipenv-run-test
+        name: "Pipenv run test"
+        language: system
+        entry: pipenv run test
+        pass_filenames: false
+        types: [python]

@@ -10,6 +10,7 @@ signalrcore = "*"
 [dev-packages]
 black = "*"
 pylint = "*"
+pre-commit = "*"
 
 [requires]
 python_version = "3.8"
@@ -19,3 +20,4 @@ start = "python src/main.py"
 test = "python test/test.py"
 lint = "pylint ./src"
 format = "black ./src"
+postinstall = "pre-commit install"
