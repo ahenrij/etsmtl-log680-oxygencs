@@ -1,2 +1,2 @@
 #!/bin/bash
-pipenv run test
+python -m pipenv run test
