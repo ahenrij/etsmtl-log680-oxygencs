@@ -1,14 +1,4 @@
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.4.0
-    hooks:
-      - id: trailing-whitespace
-      - id: end-of-file-fixer
-      - id: check-yaml
-      - id: check-json
-      - id: debug-statements
-
-  # Add other hooks you want to run with pipenv here
   - repo: local
     hooks:
       - id: pipenv-run-format
