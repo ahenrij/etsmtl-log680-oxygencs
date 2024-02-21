@@ -6,6 +6,14 @@ It leverages `signalrcore` to maintain a real-time connection to the sensor hub 
 
 This application uses `pipenv`, a tool that aims to bring the best of all packaging worlds to the Python world.
 
+## Git hooks
+
+Ensure to setup the github hooks first before working on the projet
+
+```
+$ git config --local core.hooksPath .githooks/
+```
+
 ## Requierements
 
 - Python 3.8+
