@@ -1,3 +1,4 @@
 #!/bin/bash
 pipenv run format
 pipenv run lint
+pipenv run test
