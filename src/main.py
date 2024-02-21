@@ -18,7 +18,7 @@ class App:
         self.TOKEN = os.getenv("TOKEN")  # Setup your token here
         self.T_MAX = os.getenv("T_MAX")  # Setup your max temperature here
         self.T_MIN = os.getenv("T_MIN")  # Setup your min temperature here
-        self.DATABASE_URL = ("DATABASE_URL")  # Setup your database here
+        self.DATABASE_URL = os.getenv("DATABASE_URL")  # Setup your database here
 
     def __del__(self):
         if self._hub_connection != None:
