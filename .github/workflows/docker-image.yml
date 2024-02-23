@@ -30,4 +30,4 @@ jobs:
       with: 
         context: .
         push: true
-        tags: santiagochiappe/log680_metrics:${{ env.TIMESTAMP }}
+        tags: santiagochiappe/log680_oxygencs:${{ env.TIMESTAMP }}
