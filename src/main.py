@@ -14,19 +14,19 @@ class App:
         self.TICKS = 10
 
         # To be configured by your team
-        self.HOST = os.environ.get('HOST')  #  host
-        self.TOKEN = os.environ.get('TOKEN')  #  token
+        self.HOST = os.environ.get('HOST')  # host
+        self.TOKEN = os.environ.get('TOKEN')  # token
         self.T_MAX = os.environ.get('T_MAX')  # max temperature
         self.T_MIN = os.environ.get('T_MIN')  # min temperature
-        self.DATABASE_URL = os.environ.get('DATABASE_URL')  # database
+        self.DATABASE_URL = os.environ.get('DATABASE_URL')  # database url
         self.DATABASE_USER = os.environ.get('DATABASE_USER')  # database user
-        self.DATABASE_PASSWORD = os.environ.get('DATABASE_PASSWORD')  # database password
-        self.DATABASE_NAME = os.environ.get('DATABASE_NAME') # database name
+        self.DATABASE_PASSWORD = os.environ.get('DATABASE_PASSWORD') # database password
+        self.DATABASE_NAME = os.environ.get('DATABASE_NAME')  # database name
 
     def __del__(self):
-        if self._hub_connection != None:
+        if self._hub_connection is not None:
             self._hub_connection.stop()
-        if self._db_connection != None:
+        if self._db_connection is not None:
             self._db_connection.close()
 
     def start(self):
@@ -93,8 +93,9 @@ class App:
             pass
         except requests.exceptions.RequestException as e:
             # To implement
+            print(f"An error occurred: {e}")
             pass
-    
+
     def connect_to_database(self):
         """Connect to the database."""
         try:
