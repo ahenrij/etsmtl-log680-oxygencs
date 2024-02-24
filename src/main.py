@@ -14,14 +14,16 @@ class App:
         self.TICKS = 10
 
         # To be configured by your team
-        self.HOST = os.environ.get('HOST')  # host
-        self.TOKEN = os.environ.get('TOKEN')  # token
-        self.T_MAX = os.environ.get('T_MAX')  # max temperature
-        self.T_MIN = os.environ.get('T_MIN')  # min temperature
-        self.DATABASE_URL = os.environ.get('DATABASE_URL')  # database url
-        self.DATABASE_USER = os.environ.get('DATABASE_USER')  # database user
-        self.DATABASE_PASSWORD = os.environ.get('DATABASE_PASSWORD')  # database password
-        self.DATABASE_NAME = os.environ.get('DATABASE_NAME')  # database name
+        self.HOST = os.environ.get("HOST")  # host
+        self.TOKEN = os.environ.get("TOKEN")  # token
+        self.T_MAX = os.environ.get("T_MAX")  # max temperature
+        self.T_MIN = os.environ.get("T_MIN")  # min temperature
+        self.DATABASE_URL = os.environ.get("DATABASE_URL")  # database url
+        self.DATABASE_USER = os.environ.get("DATABASE_USER")  # database user
+        self.DATABASE_PASSWORD = os.environ.get(
+            "DATABASE_PASSWORD"
+        )  # database password
+        self.DATABASE_NAME = os.environ.get("DATABASE_NAME")  # database name
 
     def __del__(self):
         if self._hub_connection is not None:
