@@ -20,7 +20,7 @@ class App:
         self.T_MIN = os.environ.get('T_MIN')  # min temperature
         self.DATABASE_URL = os.environ.get('DATABASE_URL')  # database url
         self.DATABASE_USER = os.environ.get('DATABASE_USER')  # database user
-        self.DATABASE_PASSWORD = os.environ.get('DATABASE_PASSWORD') # database password
+        self.DATABASE_PASSWORD = os.environ.get('DATABASE_PASSWORD')  # database password
         self.DATABASE_NAME = os.environ.get('DATABASE_NAME')  # database name
 
     def __del__(self):
