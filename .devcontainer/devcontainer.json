@@ -1,0 +1,32 @@
+{
+    "name": "LOG680-Oxygen",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "..",
+        "args": {
+            "VARIANT": "3.8"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "eamodio.gitlens",
+                "ms-azuretools.vscode-docker",
+                "ms-python.python",
+                "VisualStudioExptTeam.vscodeintellicode"
+            ]
+        }
+    },
+    "forwardPorts": [],
+    "remoteUser": "vscode",
+    "remoteEnv": {
+        "HOST":"http://159.203.50.162",
+        "TOKEN":"585276b9e32adb39d57c",
+        "T_MIN":"21",
+        "T_MAX":"24",
+        "DATABASE_URL":""
+    },
+    "runArgs": [
+        "--network=host"
+    ]
+}
