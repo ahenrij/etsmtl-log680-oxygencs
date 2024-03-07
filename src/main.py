@@ -100,7 +100,7 @@ class App:
 
         try:
             # Connect to the PostgreSQL database
-            connection = psycopg2.connect(**db_connection_params)
+            connection = psycopg2.connect(**DB_CONNECTION_PARAMS)
             cursor = connection.cursor()
 
             
