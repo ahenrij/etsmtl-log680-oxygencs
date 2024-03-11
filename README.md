@@ -1,3 +1,7 @@
+![Workflow Status](https://github.com/vivalareda/etsmtl-log680-oxygencs-eq7/actions/workflows/docker-hub.yml/badge.svg)
+
+[![codecov](https://codecov.io/gh/vivalareda/oxygen-cs-grpx-eq7/graph/badge.svg?token=4ERZJBA8TJ)](https://codecov.io/gh/vivalareda/oxygen-cs-grpx-eq7)
+
 # LOG-680 : Template for Oxygen-CS
 
 This Python application continuously monitors a sensor hub and manages HVAC (Heating, Ventilation, and Air Conditioning) system actions based on received sensor data.

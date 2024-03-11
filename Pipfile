@@ -6,13 +6,17 @@ name = "pypi"
 [packages]
 requests = "*"
 signalrcore = "*"
+mysql-connector-python = "*"
+psycopg2 = "*"
 
 [dev-packages]
+coverage = "*"
+pylint = "*"
 
 [requires]
 python_version = "3.8"
 
 [scripts]
 start = "python src/main.py"
-test = "# To implement"
-lint = "# To implement"
+coverage = "coverage run -m unittest discover"
+lint = "pylint src --disable=C0114,C0115,C0116 --ignore=migrations"

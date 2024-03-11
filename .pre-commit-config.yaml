@@ -1,1 +1,40 @@
-## To implement
+repos:
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.9.0
+    hooks:
+      - id: python-check-blanket-noqa
+      - id: python-check-mock-methods
+      - id: python-no-eval
+      - id: python-no-log-warn
+      - id: rst-backticks
+
+  - repo: https://github.com/PyCQA/pylint
+    rev: v2.10.1
+    hooks:
+      - id: pylint
+        args:
+          - --disable=C0114,C0115,C0116
+          - --ignore=migrations
+
+  - repo: https://github.com/psf/black
+    rev: 21.9b0
+    hooks:
+      - id: black
+        language_version: python3
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  # - repo: local
+  #   hooks:
+  #     - id: unittests
+  #       name: Run Unit Tests
+  #       entry: python -m unittest discover
+  #       language: system
+  #       pass_filenames: false
+  #       always_run: true
+  #       stages: [commit]
