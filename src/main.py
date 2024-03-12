@@ -4,6 +4,7 @@ import requests
 import json
 import time
 import os
+import psycopg2
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -19,6 +20,14 @@ class App:
         self.T_MAX = os.getenv("T_MAX")  # Setup your max temperature here
         self.T_MIN = os.getenv("T_MIN")  # Setup your min temperature here
         self.DATABASE_URL = os.getenv("DATABASE_URL")  # Setup your database here
+
+        self.USER = os.getenv("DB_USER")
+        self.PASSWORD = os.getenv("DB_PWD")
+        self.DB_PORT = os.getenv("DB_PORT")
+        self.DB_NAME = os.getenv("DB_NAME")
+
+        self.ac_activated = False
+        self.heater_activated = False
 
     def __del__(self):
         if self._hub_connection != None:
@@ -70,8 +79,13 @@ class App:
         """Take action to HVAC depending on current temperature."""
         if float(temperature) >= float(self.T_MAX):
             self.send_action_to_hvac("TurnOnAc")
+            self.ac_activated = True
         elif float(temperature) <= float(self.T_MIN):
             self.send_action_to_hvac("TurnOnHeater")
+            self.heater_activated = True
+        else:
+            self.ac_activated = False
+            self.heater_activated = False
 
     def send_action_to_hvac(self, action):
         """Send action query to the HVAC service."""
@@ -82,11 +96,26 @@ class App:
     def save_event_to_database(self, timestamp, temperature):
         """Save sensor data into database."""
         try:
-            # To implement
-            pass
+            connection = psycopg2.connect(
+                database = self.DB_NAME,
+                host = self.DATABASE_URL,
+                user = self.USER,
+                password = self.PASSWORD,
+                port = self.DB_PORT
+            )
+            cursor = connection.cursor()
+
+            cursor.execute(
+                "INSERT INTO rt_temperatures (timestamp, c_temp, ac_activated, heater_activated) VALUES (%s, %s, %s, %s)",
+                (timestamp, temperature, self.ac_activated, self.heater_activated)
+            )
+
+            connection.commit()
         except requests.exceptions.RequestException as e:
-            # To implement
-            pass
+            print(e)
+            if (connection):
+                cursor.close()
+                connection.close()
 
 
 if __name__ == "__main__":
