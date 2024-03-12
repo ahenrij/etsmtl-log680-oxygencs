@@ -1,1 +1,24 @@
-## To implement
+repos:
+  - repo: https://github.com/ambv/black
+    rev: stable
+    hooks:
+      - id: black
+        language_version: python3
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        args:
+          [
+            "-rn", # Only display messages
+            "-sn", # Don't display the score
+          ]
+      - id: run-tests
+        name: Run Unit Tests
+        entry: python -m pytest test
+        language: system
+        pass_filenames: false
+        types: [python]
